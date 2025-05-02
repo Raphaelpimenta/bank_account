@@ -1,7 +1,7 @@
 abstract class BankAccount {
     name: string
     numberAccount: number
-    private balance: number = 0 //saldo inicial
+     balance: number = 0 //saldo inicial
     status: boolean = true
     // valores: number
 
@@ -16,7 +16,7 @@ abstract class BankAccount {
          this.balance = balance
     }
 
-
+    //Valor do saldo
     getBalance = (): number => {
         console.log(`Saldo (balance): ${this.balance}`)
         return this.balance
@@ -26,8 +26,14 @@ abstract class BankAccount {
 
 
 
-    saque = (): void => {
-        console.log('Você sacou')
+    saque = (balance: number): void => {
+        console.log(`Você sacou ${balance}`)
+        this.getBalance()
+        
+
+        
+
+        
     }
 
     statusValidate = (): boolean => {
@@ -60,34 +66,16 @@ class PersonalAccount extends BankAccount {
 
 
 class CompanyAccount extends BankAccount{
-    // valor: number
-
+    
 
     constructor(name: string, numberAccount: number){
         super(name, numberAccount)
     }
 
-    // deposit = (valor: number): number => {
-    //     // if(this.valor > 0 ) {
-    //     //     console.log(`A empresa depositou R$: ${this.valor} `)
-    //     //     return this.valor = valor
-    //     // }
-        
-    //     // throw new Error('não foi possivel depositar')
-    //     return this.valor = valor
-    // }
-
-    // getBalance = (): void => {
-
-    // }
-
-
-    // deposit: (balance: number): void => {
-    //     console.log(`você depositou ${balance}`)
-    // }
-
-  
-
+    deposit = (balance: number): number => {
+        console.log(`A empresa depositou ${balance}`)
+        return this.balance = balance
+    }
 
 }
 
@@ -99,15 +87,14 @@ class CompanyAccount extends BankAccount{
 // console.log(myAccount.name)
 // myAccount.saque()
 
-const personalAccount: PersonalAccount = new PersonalAccount('Maria', 22, 1000)
-// console.log(personalAccount)
-// personalAccount.deposit(600)
-// console.log('novo saldo:', personalAccount)
-// personalAccount.getBalance()
+const personalAccount: PersonalAccount = new PersonalAccount('Maria', 22, 1000)//name, numberAccount, id_doc
+personalAccount.saque(44)
+console.log(personalAccount)
 
 
-const companyAccount: CompanyAccount = new CompanyAccount('Pimenta', 555)
-console.log(companyAccount)
-companyAccount.deposit(10000)
-console.log('novo', companyAccount)
+const companyAccount: CompanyAccount = new CompanyAccount('Pimenta', 555) //name, numberAccount
+// console.log(companyAccount)
+// companyAccount.deposit(10000)
+// console.log('novo', companyAccount)
+// companyAccount.getBalance()
 
